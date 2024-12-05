@@ -1,11 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        int inputNumber = 5;
+        int inputNumber = 28;
         System.out.printf("\n1 - Soma de Números\nEntrada = %d\nSaída = %s", inputNumber, addNumbers(inputNumber));
 
         System.out.printf("\n2 - Fatorial\nEntrada = %d\nSaída = %s", inputNumber, factorial(inputNumber));
 
         System.out.printf("\n3  - Contagem de Dígitos\nEntrada = %d\nSaída = %s", 1, digitCount(1));
+
+        System.out.printf("\n2 - Número primo\nEntrada = %d\nSaída = %s", inputNumber, isPrime(inputNumber));
     }
 
     /**
@@ -108,5 +110,35 @@ public class Main {
 
         // Return the total count of digits
         return count;
+    }
+
+    /**
+     * Determines if a given number is a prime number.
+     *
+     * A prime number is a natural number greater than 1 that has no positive divisors
+     * other than 1 and itself. This method checks if the input number meets this condition.
+     *
+     * @param number The number to check. Must be an integer.
+     * @return {@code true} if the number is prime, {@code false} otherwise.
+     *         - Returns {@code false} for numbers less than or equal to 1.
+     *         - Returns {@code false} if the number has any divisors other than 1 and itself.
+     *         - Returns {@code true} if the number is prime.
+     */
+    public static boolean isPrime(int number) {
+        // Numbers less than or equal to 1 are not prime
+        if (number <= 1) {
+            return false;
+        }
+
+        // Loop through potential divisors from 2 to the square root of the number
+        for (int i = 2; i < Math.sqrt(number); i++) {
+            // If the number is divisible by any i, it is not prime
+            if (number % i == 0) {
+                return false;
+            }
+        }
+
+        // If no divisors were found, the number is prime
+        return true;
     }
 }
