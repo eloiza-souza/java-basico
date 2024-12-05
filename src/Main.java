@@ -7,7 +7,9 @@ public class Main {
 
         System.out.printf("\n3  - Contagem de Dígitos\nEntrada = %d\nSaída = %s", 1, digitCount(1));
 
-        System.out.printf("\n2 - Número primo\nEntrada = %d\nSaída = %s", inputNumber, isPrime(inputNumber));
+        System.out.printf("\n4 - Número primo\nEntrada = %d\nSaída = %s", inputNumber, isPrime(inputNumber));
+
+        System.out.printf("\n5  - Inversão de Dígitos\nEntrada = %d\nSaída = %s", 12345, inverseNumber(12345));
     }
 
     /**
@@ -85,7 +87,6 @@ public class Main {
         return factorialStr.insert(0,factorial).toString();
     }
 
-
     /**
      * Counts the number of digits in a given positive integer.
      *
@@ -114,9 +115,8 @@ public class Main {
 
     /**
      * Determines if a given number is a prime number.
-     *
-     * A prime number is a natural number greater than 1 that has no positive divisors
-     * other than 1 and itself. This method checks if the input number meets this condition.
+     * <p>A prime number is a natural number greater than 1 that has no positive divisors
+     *    other than 1 and itself. This method checks if the input number meets this condition.<p>
      *
      * @param number The number to check. Must be an integer.
      * @return {@code true} if the number is prime, {@code false} otherwise.
@@ -140,5 +140,40 @@ public class Main {
 
         // If no divisors were found, the number is prime
         return true;
+    }
+
+    /**
+     * Reverses the digits of a given positive integer.
+     *
+     * @param number The number to be reversed. Must be a positive integer.
+     * @return The number with its digits in reverse order.
+     * For example, if the input is 12345, the output will be 54321.
+     */
+    public static int inverseNumber(int number) {
+        // Calculate the total number of digits in the given number
+        int digits = digitCount(number);
+
+        // Variable to store the reversed number
+
+        // Variable to assist in the calculation without modifying the original number
+        int assistant = number;
+
+        // Variable to store the current digit being processed
+        int digit;
+
+        // Loop through each digit of the number
+        for (int i = 0; i < digits; i++) {
+            // Extract the last digit of the number
+            digit = assistant % 10;
+
+            // Remove the last digit from the assistant variable
+            assistant /= 10;
+
+            // Add the digit to the result in its reversed position
+            result += (int) (digit * Math.pow(10, digits - i - 1));
+        }
+
+        // Return the reversed number
+        return result;
     }
 }
