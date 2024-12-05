@@ -4,6 +4,8 @@ public class Main {
         System.out.printf("\n1 - Soma de Números\nEntrada = %d\nSaída = %s", inputNumber, addNumbers(inputNumber));
 
         System.out.printf("\n2 - Fatorial\nEntrada = %d\nSaída = %s", inputNumber, factorial(inputNumber));
+
+        System.out.printf("\n3  - Contagem de Dígitos\nEntrada = %d\nSaída = %s", 1, digitCount(1));
     }
 
     /**
@@ -79,5 +81,32 @@ public class Main {
         }
         // Insert the factorial at the beginning of the string and return the result
         return factorialStr.insert(0,factorial).toString();
+    }
+
+
+    /**
+     * Counts the number of digits in a given positive integer.
+     *
+     * @param number The number for which the digit count will be calculated.
+     *               Must be a positive integer.
+     * @return The total number of digits in the given number.
+     *         For example, if the input is 12345, the output will be 5.
+     */
+    public static int digitCount(int number) {
+
+        // Variable to store the count of digits
+        int count = 0;
+
+        // Variable to assist in the calculation without modifying the original number
+        int assistant = number;
+
+        // Loop to divide the number by 10 until it becomes 0
+        while (assistant > 0) {
+            assistant = assistant / 10; // Remove the last digit
+            count++; // Increment the digit count
+        }
+
+        // Return the total count of digits
+        return count;
     }
 }
