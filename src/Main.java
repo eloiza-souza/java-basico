@@ -1,15 +1,19 @@
 public class Main {
     public static void main(String[] args) {
-        int inputNumber = 28;
-        System.out.printf("\n1 - Soma de Números\nEntrada = %d\nSaída = %s", inputNumber, addNumbers(inputNumber));
 
-        System.out.printf("\n2 - Fatorial\nEntrada = %d\nSaída = %s", inputNumber, factorial(inputNumber));
+        System.out.printf("\n1 - Soma de Números\nEntrada = %d\nSaída = %s\n", 5, addNumbers(5));
 
-        System.out.printf("\n3  - Contagem de Dígitos\nEntrada = %d\nSaída = %s", 1, digitCount(1));
+        System.out.printf("\n2 - Fatorial\nEntrada = %d\nSaída = %s\n", 5, factorial(5));
 
-        System.out.printf("\n4 - Número primo\nEntrada = %d\nSaída = %s", inputNumber, isPrime(inputNumber));
+        System.out.printf("\n3  - Contagem de Dígitos\nEntrada = %d\nSaída = %s\n", 12345, digitCount(12345));
 
-        System.out.printf("\n5  - Inversão de Dígitos\nEntrada = %d\nSaída = %s", 12345, inverseNumber(12345));
+        System.out.printf("\n4 - Número primo\nEntrada = %d\nSaída = %s\n", 29, isPrime(29));
+
+        System.out.printf("\n5  - Inversão de Dígitos\nEntrada = %d\nSaída = %s\n", 12345, inverseNumber(12345));
+
+        System.out.printf("\n5  - Potência\nEntrada = %s\nSaída = %s\n", "2^3" , pow(2,3));
+
+        System.out.printf("\n4 - Palindromo\nEntrada = %d\nSaída = %s\n", 2552, isPalindrome(2552));
     }
 
     /**
@@ -154,6 +158,7 @@ public class Main {
         int digits = digitCount(number);
 
         // Variable to store the reversed number
+        int result = 0;
 
         // Variable to assist in the calculation without modifying the original number
         int assistant = number;
@@ -176,4 +181,24 @@ public class Main {
         // Return the reversed number
         return result;
     }
+
+    /**
+     * Calculates the power of a given base raised to a specified exponent.
+     *
+     * @param base The base number to be raised to a power.
+     * @param expoent The exponent to which the base is raised.
+     *                It determines how many times the base is multiplied by itself.
+     * @return The result of base^expoent (base raised to the power of expoent).
+     */
+    public static int pow(int base, int expoent){
+        // Initialize to 1 to handle the case of expoent = 0 correctly.
+        int pow = 1;
+
+        for(int i = 0; i < expoent; i++){
+            pow *= base;
+        }
+        return pow;
+    }
+
+
 }
