@@ -200,5 +200,13 @@ public class Main {
         return pow;
     }
 
-
+    /**
+     * Checks if a given number is a palindrome.
+     *
+     * @param number The number to be checked for being a palindrome.
+     * @return {@code true} if the number is a palindrome, {@code false} otherwise.
+     */
+    public static boolean isPalindrome(int number) {
+        return number == inverseNumber(number);
+    }
 }
