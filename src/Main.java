@@ -11,20 +11,24 @@ public class Main {
 
         System.out.printf("\n5  - Inversão de Dígitos\nEntrada = %d\nSaída = %s\n", 12345, inverseNumber(12345));
 
-        System.out.printf("\n5  - Potência\nEntrada = %s\nSaída = %s\n", "2^3" , pow(2,3));
+        System.out.printf("\n5  - Potência\nEntrada = %s\nSaída = %s\n", "2^3", pow(2, 3));
 
-        System.out.printf("\n4 - Palindromo\nEntrada = %d\nSaída = %s\n", 2552, isPalindrome(2552));
+        System.out.printf("\n4 - Palíndromo\nEntrada = %d\nSaída = %s\n", 2552, isPalindrome(2552));
+
+        System.out.printf("\n1 - Múltiplos de um número\nEntrada = %s\nSaída = %s\n", "5 até 46",
+                numberMultiplies(5, 46));
     }
 
     /**
      * Calculates the sum of all integers from 1 to the given number and returns a string
      * representation of the sum along with the sequence of numbers added.
+     *
      * @param number The upper limit of the range (inclusive) for which the sum will be calculated.
      *               Must be a positive integer.
      * @return A string containing the total sum followed by the sequence of numbers added.
-     *         For example, if the input is 5, the output will be "15 (1 + 2 + 3 + 4 + 5)".
+     * For example, if the input is 5, the output will be "15 (1 + 2 + 3 + 4 + 5)".
      */
-    public static String addNumbers (int number){
+    public static String addNumbers(int number) {
         // StringBuilder to construct the sequence of numbers being added
         StringBuilder addedNumbers = new StringBuilder();
         // Variable to store the cumulative sum
@@ -40,14 +44,14 @@ public class Main {
             // Append the current number to the sequence
             addedNumbers.append(i);
             // If it's not the last number, append " + " for formatting
-            if(i != number)
+            if (i != number)
                 addedNumbers.append(" + ");
-            // If it's the last number, close the sequence with a closing parenthesis
+                // If it's the last number, close the sequence with a closing parenthesis
             else
                 addedNumbers.append(")");
         }
         // Insert the total sum at the beginning of the string and return the result
-        return addedNumbers.insert(0,sum).toString();
+        return addedNumbers.insert(0, sum).toString();
     }
 
     /**
@@ -58,7 +62,7 @@ public class Main {
      * @return A string containing the factorial value followed by the sequence of numbers multiplied.
      * For example, if the input is 5, the output will be "120 (5 * 4 * 3 * 2 * 1)".
      */
-    public static String factorial(int number){
+    public static String factorial(int number) {
         // StringBuilder to construct the sequence of numbers being multiplied
         StringBuilder factorialStr = new StringBuilder();
         // Variable to store the cumulative factorial result
@@ -88,7 +92,7 @@ public class Main {
             i--;
         }
         // Insert the factorial at the beginning of the string and return the result
-        return factorialStr.insert(0,factorial).toString();
+        return factorialStr.insert(0, factorial).toString();
     }
 
     /**
@@ -97,7 +101,7 @@ public class Main {
      * @param number The number for which the digit count will be calculated.
      *               Must be a positive integer.
      * @return The total number of digits in the given number.
-     *         For example, if the input is 12345, the output will be 5.
+     * For example, if the input is 12345, the output will be 5.
      */
     public static int digitCount(int number) {
 
@@ -120,13 +124,13 @@ public class Main {
     /**
      * Determines if a given number is a prime number.
      * <p>A prime number is a natural number greater than 1 that has no positive divisors
-     *    other than 1 and itself. This method checks if the input number meets this condition.<p>
+     * other than 1 and itself. This method checks if the input number meets this condition.<p>
      *
      * @param number The number to check. Must be an integer.
      * @return {@code true} if the number is prime, {@code false} otherwise.
-     *         - Returns {@code false} for numbers less than or equal to 1.
-     *         - Returns {@code false} if the number has any divisors other than 1 and itself.
-     *         - Returns {@code true} if the number is prime.
+     * - Returns {@code false} for numbers less than or equal to 1.
+     * - Returns {@code false} if the number has any divisors other than 1 and itself.
+     * - Returns {@code true} if the number is prime.
      */
     public static boolean isPrime(int number) {
         // Numbers less than or equal to 1 are not prime
@@ -185,16 +189,16 @@ public class Main {
     /**
      * Calculates the power of a given base raised to a specified exponent.
      *
-     * @param base The base number to be raised to a power.
+     * @param base    The base number to be raised to a power.
      * @param expoent The exponent to which the base is raised.
      *                It determines how many times the base is multiplied by itself.
      * @return The result of base^expoent (base raised to the power of expoent).
      */
-    public static int pow(int base, int expoent){
+    public static int pow(int base, int expoent) {
         // Initialize to 1 to handle the case of expoent = 0 correctly.
         int pow = 1;
 
-        for(int i = 0; i < expoent; i++){
+        for (int i = 0; i < expoent; i++) {
             pow *= base;
         }
         return pow;
@@ -209,4 +213,28 @@ public class Main {
     public static boolean isPalindrome(int number) {
         return number == inverseNumber(number);
     }
+
+    /**
+     * Generates a sequence of multiples of a given number up to a specified limit.
+     *
+     *  @param number The base number whose multiples are to be calculated.
+     *  @param limit The upper limit up to which multiples of the number are generated.
+     *  @return A string containing the sequence of multiples of the number, separated by spaces.
+     *  If no multiples are found within the limit, an empty string is returned.
+     */
+    public static String numberMultiplies(int number, int limit) {
+        // Variable to assist in the calculation without modifying the original number
+        int assistant = number;
+        // StringBuilder to construct the sequence of numbers multiplies
+        StringBuilder multiplies = new StringBuilder();
+
+         do{
+            multiplies.append(assistant);
+            multiplies.append(" ");
+            assistant += number;
+
+        }while (assistant <= limit);
+        return multiplies.toString();
+    }
+
 }
