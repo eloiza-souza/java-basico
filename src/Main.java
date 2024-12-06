@@ -1,3 +1,7 @@
+import com.sun.security.jgss.GSSUtil;
+
+import java.util.function.BinaryOperator;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -17,6 +21,8 @@ public class Main {
 
         System.out.printf("\n1 - Múltiplos de um número\nEntrada = %s\nSaída = %s\n", "5 até 46",
                 numberMultiplies(5, 46));
+
+        System.out.println(binaryToDecimal("1010"));
     }
 
     /**
@@ -217,10 +223,10 @@ public class Main {
     /**
      * Generates a sequence of multiples of a given number up to a specified limit.
      *
-     *  @param number The base number whose multiples are to be calculated.
-     *  @param limit The upper limit up to which multiples of the number are generated.
-     *  @return A string containing the sequence of multiples of the number, separated by spaces.
-     *  If no multiples are found within the limit, an empty string is returned.
+     * @param number The base number whose multiples are to be calculated.
+     * @param limit  The upper limit up to which multiples of the number are generated.
+     * @return A string containing the sequence of multiples of the number, separated by spaces.
+     * If no multiples are found within the limit, an empty string is returned.
      */
     public static String numberMultiplies(int number, int limit) {
         // Variable to assist in the calculation without modifying the original number
@@ -228,13 +234,35 @@ public class Main {
         // StringBuilder to construct the sequence of numbers multiplies
         StringBuilder multiplies = new StringBuilder();
 
-         do{
+        do {
             multiplies.append(assistant);
             multiplies.append(" ");
             assistant += number;
 
-        }while (assistant <= limit);
+        } while (assistant <= limit);
         return multiplies.toString();
+    }
+
+    /**
+     * Converts a binary string to its decimal equivalent.
+     *
+     * @param binary A string representing a binary number (e.g., "1010" for 10 in decimal).
+     *               The string should only contain the characters '0' and '1'.
+     * @return The decimal equivalent of the binary string.
+     */
+    public static int binaryToDecimal(String binary) {
+        int decimal = 0;
+        int byteNumber;
+
+        for (int i = binary.length() - 1, exp = 0; i >= 0 && exp < binary.length(); i--, exp++) {
+            byteNumber = binary.charAt(i);
+
+            if (byteNumber == '1')
+                decimal += (int) Math.pow(2, exp);
+
+        }
+
+        return decimal;
     }
 
 }
