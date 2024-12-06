@@ -22,7 +22,9 @@ public class Main {
         System.out.printf("\n1 - Múltiplos de um número\nEntrada = %s\nSaída = %s\n", "5 até 46",
                 numberMultiplies(5, 46));
 
-        System.out.println(binaryToDecimal("1010"));
+        System.out.printf("\n4 - Converte binario para decimal\nEntrada = %s\nSaída = %s\n", "101010",
+                binaryToDecimal("101010"));
+        System.out.printf("\n4 - Fibonacci\nEntrada = %d\nSaída = %s\n", 10, fibonacci(10));
     }
 
     /**
@@ -265,4 +267,44 @@ public class Main {
         return decimal;
     }
 
+
+    /**
+     * Generates a Fibonacci sequence up to the specified number of terms.
+     *
+     * @param number The number of terms in the Fibonacci sequence to generate. Must be a non-negative integer.
+     * @return A string containing the Fibonacci sequence up to the specified number of terms, separated by spaces.
+     */
+    public static String fibonacci(int number) {
+        // StringBuilder to construct the sequence of Fibonacci numbers
+        StringBuilder fibonacci = new StringBuilder();
+        int firstNumber = 0;
+        int secondNumber = 1;
+        int i = 0;
+
+        // Add the first term (0) if the number of terms is at least 0
+        if (number >= 0) {
+            fibonacci.append(firstNumber);
+            fibonacci.append(" ");
+            i++;
+        }
+
+        // Add the second term (1) if the number of terms is at least 1
+        if (number >= 1) {
+            fibonacci.append(secondNumber);
+            fibonacci.append(" ");
+            i++;
+        }
+
+        // Generate the remaining terms of the Fibonacci sequence
+        while (i < number) {
+            int assistant = secondNumber;
+            secondNumber += firstNumber;
+            firstNumber = assistant;
+            fibonacci.append(secondNumber);
+            fibonacci.append(" ");
+            i++;
+        }
+
+        return fibonacci.toString();
+    }
 }
